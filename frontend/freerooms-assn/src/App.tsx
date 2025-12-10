@@ -1,38 +1,21 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import navbarLogo from '../../assets/navbarLogo.png'
-import searchLogo from '../../assets/search_24.png'
-import gridLogo from '../../assets/grid_view.png'
-import mapLogo from '../../assets/map_24.png'
-import darkLogo from '../../assets/dark_mode.png'
+
 import filterAlt from '../../assets/filter_alt_24dp_F06C00_FILL1_wght400_GRAD0_opsz24.png'
 import filterList from '../../assets/filter_list_24dp_F06C00_FILL1_wght400_GRAD0_opsz24.png'
 import graySearch from '../../assets/search_24dp_9E9E9E_FILL1_wght400_GRAD0_opsz24.png'
 import './App.css'
 
+import Navbar from '../components/Navbar'
+
 function App() {
 
   return (
     <>
-      <div className="flex border-b border-gray-300 justify-between items-center">
-        <img src={navbarLogo} alt="navbar logo" className='w-1/8 ml-4 my-1.5'/>
+      <Navbar />
 
-        <div className="flex justify-center items-center gap-2 mr-6">
-          <div className="border border-[#f06c00] p-1.5 h-7/8 rounded-sm">
-            <img src={searchLogo} alt="search logo" className='w-full text-black'/>
-          </div>
-          <div className="border border-[#f06c00] bg-[#f06c00] p-1.5 h-7/8 rounded-sm">
-            <img src={gridLogo} alt="grid logo" className='w-full text-black'/>
-          </div>
-          <div className="border border-[#f06c00] p-1.5 h-7/8 rounded-sm">
-            <img src={mapLogo} alt="map logo" className='w-full text-black'/>
-          </div>
-          <div className="border border-[#f06c00] p-1.5 h-7/8 rounded-sm">
-            <img src={darkLogo} alt="dark mode logo" className='w-full text-black'/>
-          </div>
-        </div>
-      </div>
+      {/* middle section */}
       <div className="flex p-3 ml-2 justify-between mr-2 gap-3">
         <button className="flex py-1.5 px-4 border-2 border-[#f06c00] rounded-lg">
           <img src={filterAlt} alt="filter alt" className='w-full text-black'/>
