@@ -26,7 +26,7 @@ const app = express();
 app.use(express.json());
 
 // Store your recipes here!
-const cookbook: any = null;
+const cookbook: cookbookEntry[] = [];
 
 // Task 1 helper (don't touch)
 app.post("/parse", (req:Request, res:Response) => {
@@ -51,16 +51,63 @@ const parse_handwriting = (recipeName: string): string | null => {
     return null
   }
 
+  // hyphens and underscores
+  let parsedName = recipeName.replace(/[_-]/g, " ")
 
-  return recipeName
+  // removes non-letter characters
+  parsedName = parsedName.replace(/[^a-zA-Z\s]/g, "")
+
+  // any whitespace greater than one character
+  parsedName = parsedName.replace(/\s+/g, " ").trim()
+
+  // first character of each word capitalised and split
+  parsedName = parsedName.split(" ").map(item => 
+    item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()
+  ).join(" ")
+
+  return parsedName
 }
 
 // [TASK 2] ====================================================================
 // Endpoint that adds a CookbookEntry to your magical cookbook
 app.post("/entry", (req:Request, res:Response) => {
   // TODO: implement me
-  res.status(500).send("not yet implemented!")
+  const { name, type } = req.body;
 
+  if (type !== "ingredient" && type !== "recipe") {
+    return res.status(400).send("type must be ingredient or recipe");
+  }
+
+  if (cookbook.find(e => e.name.toLowerCase() === name.toLowerCase())) {
+    return res.status(400).send("entry already exists")
+  }
+
+  let entry: cookbookEntry
+
+  if (type === "ingredient") {
+    const { cookTime } = req.body;
+
+    if (cookTime < 0 || cookTime === null) {
+      return res.status(400).send("invalid cooking time");
+    }
+
+    entry = { name, type, cookTime } as ingredient
+  } else if (type === "recipe") {
+    const { requiredItems } = req.body;
+
+    if (!Array.isArray(requiredItems)) {
+      return res.status(400).send("requiredItems must be array and have one element per name");
+    }
+
+    entry = { name, type, requiredItems } as recipe
+
+  }
+
+  // adds entries
+  cookbook.push(entry)
+
+  return res.status(200).send({})
+  // res.status(500).send("not yet implemented!")
 });
 
 // [TASK 3] ====================================================================

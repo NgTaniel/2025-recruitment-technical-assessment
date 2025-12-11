@@ -38,6 +38,8 @@ function App() {
     "./cseBuilding.webp": cse
   }
 
+  // TODO: Stretch Task 2
+
   return (
     <>
       <Navbar />
