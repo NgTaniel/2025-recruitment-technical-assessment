@@ -46,6 +46,12 @@ app.post("/parse", (req:Request, res:Response) => {
 // Takes in a recipeName and returns it in a form that 
 const parse_handwriting = (recipeName: string): string | null => {
   // TODO: implement me
+  // base case
+  if (recipeName.length <= 0 || recipeName === null) {
+    return null
+  }
+
+
   return recipeName
 }
 
