@@ -87,7 +87,7 @@ function App() {
               /> */}
               <div className="absolute right-2 top-2 bg-white py-2 px-2 rounded-xl flex items-center gap-2">
                 <img src={greenDot} alt="green dot" className='w-1/10 ml-1'/>
-                <p className="text-black font-bold text-[10px] ">
+                <p className="text-black font-semibold text-[10px] ">
                   {item.rooms_available} rooms available
                 </p>
               </div>
