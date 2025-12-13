@@ -75,29 +75,43 @@ function App() {
           return (
             <div
               key={index}
-              className="relative h-30 lg:h-75 sm:h-40 rounded-md overflow-hidden items-center"
+              className="relative h-20 lg:h-75 sm:h-42 rounded-md overflow-hidden items-center"
               style={{
                 backgroundImage: `url(${buildingMap[imageKey as keyof typeof buildingMap]})`,
                 backgroundSize: 'cover',
                 backgroundPosition: '60% center'
               }}
             >
+              {/* extra shadow in mobile view for background image */}
+              <div className="absolute inset-0 bg-black/50 md:hidden"/>
               {/* <img 
                 src={buildingMap[imageKey as keyof typeof buildingMap]} 
                 alt={item.name} 
                 className='w-full h-3/4 object-cover rounded-md mb-2'
               /> */}
-              <div className="absolute right-2 top-2 bg-white py-2 px-2 rounded-xl flex items-center gap-2">
-                <img src={greenDot} alt="green dot" className='w-1/10 ml-1'/>
+              <div className="absolute right-2 top-2 bg-white py-2 md:px-2 px-1 rounded-xl md:flex items-center gap-2 hidden">
+                <img src={greenDot} alt="green dot" className='w-1/6 md:w-1/10 ml-1'/>
                 <p className="text-black font-semibold text-[10px] ">
                   {item.rooms_available} rooms available
                 </p>
               </div>
-                
-              <div className="flex items-center justify-center">
+              <div className="md:flex items-center justify-center hidden">
                 <h3 className="py-2.75 px-4 rounded-md bg-[#ef6c00] w-19/20 font-semibold text-sm absolute bottom-2 text-white">
                   {item.name}
                 </h3>
+              </div>
+
+              {/* mobile view cards */}
+              <div className="md:hidden absolute inset-0 flex items-center justify-center">
+                <h3 className="py-2.75 px-4 rounded-md w-19/20 font-semibold text-sm text-white">
+                  {item.name}
+                </h3>
+                <div className="bg-white py-2 md:px-2 px-1 rounded-2xl flex items-center gap-2 mr-2">
+                  <img src={greenDot} alt="green dot" className='w-1/6 md:w-1/10 ml-1'/>
+                  <p className="text-black font-semibold text-[11px]">
+                    {item.rooms_available} / {item.rooms_available}
+                  </p>
+                </div>
               </div>
             </div>
 
