@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="flex border-b border-gray-300 justify-between items-center">
-        <img src={navbarLogo} alt="navbar logo" className='w-1/8 ml-4 my-1.5'/>
+        <img src={navbarLogo} alt="navbar logo" className='sm:w-1/4 lg:w-1/8 ml-4 my-1.5'/>
 
         <img src={doorToggle} onClick={() => handleToggle()} className='w-1/25 cursor-pointer'/>
 

@@ -53,9 +53,9 @@ function App() {
           </p>
         </button>
 
-        <button className="flex flex-[0.575] items-center border-2 border-gray-300 rounded-md">
-          <img src={graySearch} alt="gray search bar" className='flex justify-center pl-3 py-2 pr-2 text-black'/>
-          <p className="text-gray-400">
+        <button className="flex sm:flex-[0.9] lg:flex-[0.575] items-center border-2 border-gray-300 rounded-md">
+          <img src={graySearch} alt="gray search bar" className='flex justify-center sm:pl-2 sm:py-1 sm:pr-1 lg:pl-3 lg:py-2 lg:pr-2 text-black'/>
+          <p className="text-gray-400 sm:text-sm ">
             Search for a building...
           </p>
         </button>
@@ -69,13 +69,13 @@ function App() {
       </div>
 
       {/* building section */}
-      <div className="grid grid-cols-5 mx-4 my-1 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-5 sm:grid-cols-2 mx-4 my-1 gap-4">
         {data.map((item, index) => {
           const imageKey = item.building_picture || item.building_file;
           return (
             <div
               key={index}
-              className="relative h-75 rounded-md overflow-hidden items-center"
+              className="relative h-30 lg:h-75 sm:h-40 rounded-md overflow-hidden items-center"
               style={{
                 backgroundImage: `url(${buildingMap[imageKey as keyof typeof buildingMap]})`,
                 backgroundSize: 'cover',
